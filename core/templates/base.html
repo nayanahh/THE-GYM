@@ -12,7 +12,7 @@
         body { background-color: #000; color: #fff; overflow-x: hidden; }
         
         header { position: absolute; top: 0; width: 100%; z-index: 100; }
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 30px 8%; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 30px 8%; position: relative; }
         .logo { font-size: 1.4rem; letter-spacing: 2px; font-weight: 400; display: flex; align-items: center; }
         .logo::before { content: "⬡"; color: var(--accent-green); margin-right: 10px; font-size: 1.8rem; }
         .logo strong { font-weight: 900; }
@@ -25,12 +25,78 @@
         }
         nav ul li a:hover, nav ul li a.active { color: var(--accent-green); }
 
+        .nav-toggle {
+            display: none;
+        }
+        .nav-toggle-label {
+            display: none;
+        }
+
         .hero {
             height: 100vh; width: 100%;
             background: linear-gradient(to right, rgba(0,0,0,0.9) 35%, rgba(0,0,0,0.1)), 
                         url("{% static 'images/Female Fitness Photoshoot Ideas Gym.jpg' %}");
-            background-size: fill; background-position: center;
+            background-size: cover; background-position: center;
             display: flex; align-items: center; padding: 0 10%; position: relative;
+        }
+
+        @media (max-width: 980px) {
+            nav { padding: 18px 6%; }
+            .logo { font-size: 1.2rem; }
+            nav ul li { margin-left: 18px; }
+            .hero { padding: 0 6% !important; }
+            .hero-content h1, .hero-content h2 { font-size: 3rem !important; }
+            .hero-content p { font-size: 0.85rem !important; }
+            .btn-outline { padding: 14px 26px !important; }
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 16px 5%; }
+            nav ul { 
+                position: fixed; top: 0; right: 0; height: 100vh; width: 260px;
+                flex-direction: column; align-items: flex-start;
+                background: rgba(0,0,0,0.95); padding-top: 100px;
+                transform: translateX(100%); transition: transform 0.3s ease;
+            }
+            nav ul li { margin: 18px 0; margin-left: 0; width: 100%; text-align: center; }
+            nav ul li a { width: 100%; display: inline-block; padding: 12px 0; }
+
+            .nav-toggle { 
+                display: block; position: absolute; top: 22px; right: 5%;
+                width: 34px; height: 24px; opacity: 0; z-index: 150;
+            }
+            .nav-toggle-label {
+                display: block; position: absolute; top: 22px; right: 5%;
+                width: 34px; height: 24px; z-index: 149; cursor: pointer;
+            }
+            .nav-toggle-label span {
+                display: block; width: 100%; height: 3px; background: #fff;
+                margin: 5px 0; transition: transform 0.3s ease, opacity 0.3s ease;
+            }
+            .nav-toggle:checked + .nav-toggle-label + ul {
+                transform: translateX(0);
+            }
+            .nav-toggle:checked + .nav-toggle-label span:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+            }
+            .nav-toggle:checked + .nav-toggle-label span:nth-child(2) {
+                opacity: 0;
+            }
+            .nav-toggle:checked + .nav-toggle-label span:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+
+            section, main { padding-left: 6% !important; padding-right: 6% !important; }
+
+            .hero-content h1, .hero-content h2 { font-size: 2.4rem !important; }
+            .hero-content p { font-size: 0.8rem !important; }
+            .badge { display: none !important; }
+        }
+
+        @media (max-width: 480px) {
+            .logo { font-size: 1.1rem; }
+            .hero-content h1, .hero-content h2 { font-size: 2rem !important; }
+            nav { padding: 14px 4%; }
         }
 
         .bg-watermark {
@@ -71,6 +137,14 @@
     <header>
         <nav>
             <div class="logo">THE<strong>GYM</strong></div>
+
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation" />
+            <label for="nav-toggle" class="nav-toggle-label" aria-label="Open navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
             <ul>
                 <li><a href="{% url 'home' %}">HOMEPAGE</a></li>
                 <li><a href="{% url 'about' %}">ABOUT</a></li>
