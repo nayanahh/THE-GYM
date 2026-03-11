@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    /* Keyframe Animations */
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideInLeft {
+        from { opacity: 0; transform: translateX(-50px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    .animate-fade { animation: fadeInUp 1s ease-out forwards; }
+    .animate-slide { animation: slideInLeft 1s ease-out forwards; }
+    .delay-1 { animation-delay: 0.2s; opacity: 0; }
+    .delay-2 { animation-delay: 0.5s; opacity: 0; }
+    .delay-3 { animation-delay: 0.8s; opacity: 0; }
+
+    .journey-step {
+        border-left: 2px solid #333;
+        padding-left: 30px;
+        position: relative;
+        margin-bottom: 50px;
+        transition: 0.3s;
+    }
+
+    .journey-step:hover {
+        border-left: 2px solid var(--accent-green);
+    }
+
+    .journey-step::before {
+        content: '';
+        position: absolute;
+        left: -6px;
+        top: 0;
+        width: 10px;
+        height: 10px;
+        background: var(--accent-green);
+        border-radius: 50%;
+    }
+
+    .gym-image:hover {
+        transform: scale(1.03);
+        transition: transform 0.5s ease;
+        filter: brightness(1.1);
+    }
+</style>
+
+<section style="padding: 200px 10% 120px; text-align: center; color: white; background: linear-gradient(to bottom, rgba(0,0,0,0.8), #000), url('{% static 'images/hero-bg.jpg' %}'); background-size: cover; background-position: center;">
+    <h1 class="animate-fade" style="font-size: 5rem; font-weight: 900; letter-spacing: -2px; line-height: 0.9;">
+        YOUR STORY <br><span style="color: #48c9b0;">STARTS HERE</span>
+    </h1>
+    <p class="animate-fade delay-1" style="font-size: 1.2rem; color: #b3b3b3; margin-top: 20px; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+        We didn't just build a gym; we built a sanctuary for those who refuse to stay the same. This is our journey, and your transformation.
+    </p>
+</section>
+
+<section style="display: flex; flex-wrap: wrap; gap: 4rem; padding: 100px 10%; background: #000;">
+    
+    <div class="animate-slide delay-2" style="flex: 1 1 450px;">
+        <h2 style="font-size: 0.8rem; letter-spacing: 4px; color: #48c9b0; margin-bottom: 20px;">OUR EVOLUTION</h2>
+        
+        <div class="journey-step">
+            <h3 style="font-size: 1.8rem; margin-bottom: 10px; font-weight: 700;">THE SPARK</h3>
+            <p style="color: #888; line-height: 1.7;">It started with a simple belief: that everyone has an untapped version of themselves. We opened our doors to provide more than machines—we provided a mindset.</p>
+        </div>
+
+        <div class="journey-step">
+            <h3 style="font-size: 1.8rem; margin-bottom: 10px; font-weight: 700;">THE GRIND</h3>
+            <p style="color: #888; line-height: 1.7;">Years of sweat, heavy lifting, and discipline. We expanded our facility, brought in India's top athletes as trainers, and created an environment where "I can't" doesn't exist.</p>
+        </div>
+
+        <div class="journey-step">
+            <h3 style="font-size: 1.8rem; margin-bottom: 10px; font-weight: 700;">THE LEGACY</h3>
+            <p style="color: #888; line-height: 1.7;">Today, THE GYM is a community of thousands. From professional bodybuilders to office workers, we are a family united by the goal of being 1% better every single day.</p>
+        </div>
+    </div>
+
+    <div class="animate-fade delay-3" style="flex: 1 1 400px; text-align: center;">
+        <div style="position: relative; display: inline-block;">
+            <img src="{% static 'images/gym.jpeg' %}" 
+                 alt="Gym interior" 
+                 class="gym-image"
+                 style="max-width: 100%; height: auto; border-radius: 4px; box-shadow: 0 20px 40px rgba(0,0,0,0.6);" />
+            
+            <div style="background: #48c9b0; color: #000; padding: 30px; position: absolute; bottom: -30px; right: -20px; max-width: 250px; text-align: left; font-weight: 900; font-style: italic; font-size: 1.1rem; box-shadow: 10px 10px 0px rgba(255,255,255,0.1);">
+                "Strength does not come from winning. Your struggles develop your strengths."
+            </div>
+        </div>
+    </div>
+</section>
+
+<section style="padding: 100px 10%; text-align: center; background: #0a0a0a; border-top: 1px solid #222;">
+    <h2 class="animate-fade" style="font-size: 3rem; font-weight: 900; margin-bottom: 20px;">REWRITE <span style="color: #48c9b0;">YOUR LIMITS</span></h2>
+    <p style="color: #666; margin-bottom: 40px; font-size: 1.1rem;">Your journey is waiting. Will you take the first step?</p>
+    <a href="{% url 'contact' %}" class="btn-outline" style="border-color: #48c9b0; color: #48c9b0;">JOIN THE MOVEMENT</a>
+</section>
+
+{% endblock %}

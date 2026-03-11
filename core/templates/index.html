@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    /* Specific Hero Styling for the Home Page */
+    .hero {
+        height: 100vh;
+        width: 100%;
+        /* Using the background image you specified in base.html */
+        background: linear-gradient(to right, rgba(0,0,0,0.9) 35%, rgba(0,0,0,0.2)), 
+                    url("{% static 'images/Female Fitness Photoshoot Ideas Gym.jpg' %}");
+        background-size: fill;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+        align-items: center;
+        padding: 0 10%;
+        position: relative;
+    }
+
+    /* Animation for the hero text */
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 750px;
+        animation: fadeInUp 1.2s ease-out forwards;
+    }
+
+    .hero-content h1, .hero-content h2 {
+        font-size: 4.5rem;
+        font-weight: 900;
+        line-height: 1.1;
+        letter-spacing: -2px;
+    }
+
+    .hero-content h2 span {
+        color: var(--accent-green);
+    }
+
+    .hero-content p {
+        color: var(--text-gray);
+        font-size: 0.9rem;
+        margin: 30px 0;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        line-height: 1.8;
+    }
+
+    .bg-watermark {
+        position: absolute;
+        font-size: 20vw;
+        font-weight: 900;
+        color: rgba(255, 255, 255, 0.03);
+        z-index: 1;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        white-space: nowrap;
+        pointer-events: none;
+        letter-spacing: -5px;
+    }
+
+    .badge {
+        position: absolute;
+        bottom: 40px;
+        right: 8%;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 20px 30px;
+        border-left: 4px solid var(--accent-green);
+        backdrop-filter: blur(5px);
+        animation: fadeInUp 1.5s ease-out forwards;
+    }
+
+    .badge p {
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: #fff;
+    }
+
+    .badge span {
+        font-size: 0.7rem;
+        color: var(--accent-green);
+        letter-spacing: 1px;
+        font-weight: 700;
+    }
+</style>
+
+<main class="hero">
+    <div class="bg-watermark">THE GYM</div>
+
+    <div class="hero-content">
+        <h1>BUILD <span>YOUR BODY</span></h1>
+        <h2>TRANSFORM <span>YOUR LIFE</span></h2>
+        
+        <p>WE PROVIDE ELITE FACILITIES AND EXPERT <br>
+           TRAINERS TO HELP YOU REACH YOUR ULTIMATE GOALS.</p>
+        
+        <a href="{% url 'contact' %}" class="btn-outline">FREE TRY-OUT TRAINING</a>
+    </div>
+
+    <div class="badge">
+        <p>500+</p>
+        <span>ACTIVE MEMBERS</span>
+    </div>
+</main>
+{% endblock %}

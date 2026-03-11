@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE GYM | Build Your Body</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --accent-green: #48c9b0; --text-gray: #b3b3b3; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        body { background-color: #000; color: #fff; overflow-x: hidden; }
+        
+        header { position: absolute; top: 0; width: 100%; z-index: 100; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 30px 8%; }
+        .logo { font-size: 1.4rem; letter-spacing: 2px; font-weight: 400; display: flex; align-items: center; }
+        .logo::before { content: "⬡"; color: var(--accent-green); margin-right: 10px; font-size: 1.8rem; }
+        .logo strong { font-weight: 900; }
+
+        nav ul { display: flex; list-style: none; align-items: center; }
+        nav ul li { margin-left: 25px; }
+        nav ul li a { 
+            text-decoration: none; color: #fff; font-size: 0.75rem; 
+            font-weight: 700; letter-spacing: 1px; transition: 0.3s; 
+        }
+        nav ul li a:hover, nav ul li a.active { color: var(--accent-green); }
+
+        .hero {
+            height: 100vh; width: 100%;
+            background: linear-gradient(to right, rgba(0,0,0,0.9) 35%, rgba(0,0,0,0.1)), 
+                        url("{% static 'images/Female Fitness Photoshoot Ideas Gym.jpg' %}");
+            background-size: fill; background-position: center;
+            display: flex; align-items: center; padding: 0 10%; position: relative;
+        }
+
+        .bg-watermark {
+            position: absolute; font-size: 20vw; font-weight: 900;
+            color: rgba(255, 255, 255, 0.04); z-index: 1;
+            left: 50%; top: 50%; transform: translate(-50%, -50%);
+            white-space: nowrap; pointer-events: none; letter-spacing: -5px;
+        }
+
+        .page-watermark {
+            position: fixed; inset: 0; display: flex;
+            align-items: center; justify-content: center;
+            font-size: 22vw; font-weight: 900;
+            color: rgba(255, 255, 255, 0.03);
+            pointer-events: none; z-index: -1;
+            white-space: nowrap; letter-spacing: -5px;
+        }
+
+        .hero-content { position: relative; z-index: 2; max-width: 650px; }
+        .hero-content h1, .hero-content h2 { font-size: 4.5rem; font-weight: 900; line-height: 1.1; }
+        .hero-content h2 span { color: var(--accent-green); }
+        .hero-content p { color: var(--text-gray); font-size: 0.8rem; margin: 30px 0; text-transform: uppercase; }
+
+        .btn-outline {
+            display: inline-block; padding: 18px 40px; border: 1px solid #fff;
+            color: #fff; text-decoration: none; font-size: 0.8rem; font-weight: 700; transition: 0.4s;
+        }
+        .btn-outline:hover { background: #fff; color: #000; }
+
+        .badge {
+            position: absolute; bottom: 30px; right: 30px;
+            background: rgba(255, 255, 255, 0.05); padding: 15px 25px;
+            border-left: 4px solid var(--accent-green);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">THE<strong>GYM</strong></div>
+            <ul>
+                <li><a href="{% url 'home' %}">HOMEPAGE</a></li>
+                <li><a href="{% url 'about' %}">ABOUT</a></li>
+                <li><a href="{% url 'classes' %}">CLASSES</a></li>
+                <li><a href="{% url 'pricing' %}">PRICING</a></li>
+                <li><a href="{% url 'news' %}">NEWS</a></li>
+                <li><a href="{% url 'contact' %}">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    {% block content %}{% endblock %}
+</body>
+</html>

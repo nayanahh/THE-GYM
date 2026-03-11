@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    /* Animation for news items sliding in from the right */
+    @keyframes slideInRight {
+        from { opacity: 0; transform: translateX(40px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    .news-card {
+        animation: slideInRight 0.6s ease-out forwards;
+        opacity: 0;
+        transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .news-card:hover {
+        transform: scale(1.01);
+        background: #1a1a1a !important;
+    }
+
+    .read-more-btn {
+        color: var(--accent-green);
+        text-decoration: none;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    .read-more-btn:hover {
+        color: #fff;
+    }
+</style>
+
+<main style="padding: 140px 10% 80px; background: #000;">
+    <h1 style="font-size: 3.5rem; margin-bottom: 10px; font-weight: 900;">GYM <span style="color: var(--accent-green);">JOURNAL</span></h1>
+    <p style="color: var(--text-gray); margin-bottom: 60px; letter-spacing: 2px; text-transform: uppercase;">Latest updates, fitness tips, and community stories</p>
+    
+    <div style="display: flex; flex-direction: column; gap: 30px;">
+        
+        <article class="news-card" style="display: flex; gap: 30px; background: #111; padding: 30px; border-left: 4px solid var(--accent-green); flex-wrap: wrap; animation-delay: 0.1s;">
+            <div style="flex: 1; min-width: 250px;">
+                <span style="color: var(--accent-green); font-size: 0.75rem; font-weight: 900;">NUTRITION | MARCH 11, 2026</span>
+                <h2 style="margin: 15px 0; font-size: 2rem; font-weight: 900;">THE ULTIMATE PRE-WORKOUT MEAL GUIDE</h2>
+                <p style="color: #bbb; font-size: 1rem; line-height: 1.6; margin-bottom: 25px;">Fueling your body correctly can double your performance. Learn which complex carbs and proteins you should be eating 60 minutes before hitting the weights...</p>
+                <a href="#" class="read-more-btn">Read Full Article →</a>
+            </div>
+        </article>
+
+        <article class="news-card" style="display: flex; gap: 30px; background: #111; padding: 30px; border-left: 4px solid #fff; flex-wrap: wrap; animation-delay: 0.3s;">
+            <div style="flex: 1; min-width: 250px;">
+                <span style="color: #fff; font-size: 0.75rem; font-weight: 900;">EVENTS | MARCH 08, 2026</span>
+                <h2 style="margin: 15px 0; font-size: 2rem; font-weight: 900;">SUMMER SHRED 2026: THE 90-DAY CHALLENGE</h2>
+                <p style="color: #bbb; font-size: 1rem; line-height: 1.6; margin-bottom: 25px;">It's back! Our biggest transformation challenge of the year. Winners receive a 1-year free membership and a personalized supplement kit. Are you in?</p>
+                <a href="#" class="read-more-btn" style="color: #fff;">Register Now →</a>
+            </div>
+        </article>
+
+        <article class="news-card" style="display: flex; gap: 30px; background: #111; padding: 30px; border-left: 4px solid var(--accent-green); flex-wrap: wrap; animation-delay: 0.5s;">
+            <div style="flex: 1; min-width: 250px;">
+                <span style="color: var(--accent-green); font-size: 0.75rem; font-weight: 900;">TRAINING | MARCH 02, 2026</span>
+                <h2 style="margin: 15px 0; font-size: 2rem; font-weight: 900;">5 REASONS WHY YOU'RE HITTING A PLATEAU</h2>
+                <p style="color: #bbb; font-size: 1rem; line-height: 1.6; margin-bottom: 25px;">Stopped seeing progress? It might not be your workout—it might be your recovery. We break down the science of progressive overload and sleep cycles.</p>
+                <a href="#" class="read-more-btn">Learn More →</a>
+            </div>
+        </article>
+
+        <article class="news-card" style="display: flex; gap: 30px; background: #111; padding: 30px; border-left: 4px solid #fff; flex-wrap: wrap; animation-delay: 0.7s;">
+            <div style="flex: 1; min-width: 250px;">
+                <span style="color: #fff; font-size: 0.75rem; font-weight: 900;">SPOTLIGHT | FEB 25, 2026</span>
+                <h2 style="margin: 15px 0; font-size: 2rem; font-weight: 900;">MEMBER STORY: FROM 100KG TO MARATHON READY</h2>
+                <p style="color: #bbb; font-size: 1rem; line-height: 1.6; margin-bottom: 25px;">Meet Rahul, who transformed his life in just 12 months at THE GYM. His journey proves that consistency is the only "secret" you need to succeed.</p>
+                <a href="#" class="read-more-btn" style="color: #fff;">Watch Interview →</a>
+            </div>
+        </article>
+
+    </div>
+</main>
+{% endblock %}

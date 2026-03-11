@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    /* Keyframe Animations */
+    @keyframes zoomIn {
+        from { opacity: 0; transform: scale(0.9); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-header {
+        animation: fadeInDown 0.8s ease-out forwards;
+    }
+
+    .pricing-card {
+        animation: zoomIn 0.6s ease-out forwards;
+        opacity: 0;
+        transition: all 0.4s ease;
+        border-radius: 8px;
+    }
+
+    /* Hover effect to make cards pop */
+    .pricing-card:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Distinct Pro Plan styling */
+    .pro-plan {
+        border: 2px solid var(--accent-green) !important;
+        background: linear-gradient(145deg, #0a0a0a, #151515);
+        position: relative;
+    }
+
+    .pro-plan::top {
+        content: "MOST POPULAR";
+        position: absolute;
+        top: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--accent-green);
+        color: black;
+        padding: 5px 15px;
+        font-size: 0.7rem;
+        font-weight: 900;
+        border-radius: 20px;
+    }
+</style>
+
+<section style="padding: 160px 10% 40px; text-align: center; background: linear-gradient(to bottom, rgba(0,0,0,0.8), #000);">
+    <h1 class="animate-header" style="font-size: 3.5rem; font-weight: 900; margin-bottom: 10px;">
+        MEMBERSHIP <span style="color: var(--accent-green);">PLANS</span>
+    </h1>
+    <p class="animate-header" style="color: #888; letter-spacing: 1px; animation-delay: 0.2s;">
+        Flexible pricing tailored to your fitness goals. No hidden fees.
+    </p>
+</section>
+
+<main style="padding: 40px 8% 100px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; background: #000;">
+    
+    <div class="pricing-card" style="border: 1px solid #333; padding: 50px 40px; width: 340px; text-align: center; animation-delay: 0.3s;">
+        <h2 style="font-size: 1.2rem; letter-spacing: 3px; color: #fff;">STARTER</h2>
+        <h1 style="font-size: 3.5rem; margin: 25px 0; font-weight: 900;">₹1,499<span style="font-size: 1rem; color: #666;">/mo</span></h1>
+        <ul style="list-style: none; color: #bbb; line-height: 2.5; margin-bottom: 35px; font-size: 0.9rem;">
+            <li><strong style="color: #fff;">Standard</strong> Gym Access</li>
+            <li>General Floor Assistance</li>
+            <li>Locker & Shower Access</li>
+            <li style="text-decoration: line-through; color: #444;">Personal Training</li>
+        </ul>
+        <a href="{% url 'contact' %}" class="btn-outline">SELECT PLAN</a>
+    </div>
+
+    <div class="pricing-card pro-plan" style="padding: 50px 40px; width: 340px; text-align: center; animation-delay: 0.5s;">
+        <div style="background: var(--accent-green); color: black; display: inline-block; padding: 4px 12px; font-size: 0.7rem; font-weight: 900; margin-bottom: 15px; border-radius: 4px;">MOST POPULAR</div>
+        <h2 style="font-size: 1.2rem; letter-spacing: 3px; color: var(--accent-green);">ULTIMATE</h2>
+        <h1 style="font-size: 3.5rem; margin: 25px 0; font-weight: 900; color: #fff;">₹2,999<span style="font-size: 1rem; color: #666;">/mo</span></h1>
+        <ul style="list-style: none; color: #bbb; line-height: 2.5; margin-bottom: 35px; font-size: 0.9rem;">
+            <li><strong style="color: #fff;">Unlimited</strong> 24/7 Access</li>
+            <li>All Group Fitness Classes</li>
+            <li>2x Personal Training / Mo</li>
+            <li>Diet & Nutrition Coaching</li>
+        </ul>
+        <a href="{% url 'contact' %}" class="btn-outline" style="background: var(--accent-green); color: black; border: none; font-weight: 900;">GET STARTED</a>
+    </div>
+
+</main>
+{% endblock %}
