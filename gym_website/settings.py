@@ -11,7 +11,7 @@ SECRET_KEY = 'django-insecure-2*_^6gqt5y*(&w6y6rchyjtk_s#ib-6a@4-2(51u*dh5-$4njz
 DEBUG = True
 
 # Add Vercel domains to allowed hosts
-ALLOWED_HOSTS = ['.vercel.app', 'now.sh', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['the-gym-8uuo.onrender.com', 'localhost', '127.0.0.1']
 
 # 3. Application definition
 INSTALLED_APPS = [
